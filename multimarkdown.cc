@@ -28,16 +28,16 @@ extern "C" {
 }
 
 using namespace v8;
-char *outbuf;
-int outbuflen = -1;
-void reallocOutBuf(int len) {
-    if(len < outbuflen) {
+char *buf;
+int buflen = -1;
+void reallocbuf(int len) {
+    if(len < buflen) {
         return;
     }
 
-    free(outbuf);
-    outbuflen = len + 1;
-    outbuf = (char*) malloc(outbuflen);
+    free(buf);
+    buflen = len + 1;
+    buf = (char*) malloc(buflen);
 }
 
 Handle<Value> convert(const Arguments& args) {
@@ -51,12 +51,14 @@ Handle<Value> convert(const Arguments& args) {
     Local<String> ls = args[0]->ToString();
 
     int stringLen = ls->Length();
-    reallocOutBuf(stringLen);
-    printf("%s\n", outbuf);
-    ls->WriteUtf8(outbuf, stringLen, NULL, 0);
-    char *out = markdown_to_string(outbuf, 0, HTML_FORMAT);
+    reallocbuf(stringLen);
+    ls->WriteUtf8(buf, stringLen, NULL, 0);
+    char *out = markdown_to_string(buf, 0, HTML_FORMAT);
 
-    return scope.Close(String::New(out));
+    Local<String> outString = String::New(out);
+    free(out);
+
+    return scope.Close(outString);
 }
 
 void init(Handle<Object> target) {
