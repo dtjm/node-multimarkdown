@@ -1,6 +1,0 @@
-[submodule "deps/peg-multimarkdown"]
-	path = deps/peg-multimarkdown
-	url = git://github.com/fletcher/peg-multimarkdown.git
-[submodule "deps/waitgroup.js"]
-	path = deps/waitgroup.js
-	url = git://github.com/dtjm/waitgroup.js.git
