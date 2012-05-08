@@ -6,7 +6,7 @@ build/Release/multimarkdown.node: multimarkdown.cc wscript ${PEGMMD}/markdown_li
 	node-waf configure build
 
 ${PEGMMD}/markdown_lib.o:
-	git submodule update
+	git submodule --init deps/peg-multimarkdown
 	make -C deps/peg-multimarkdown
 
 clean:
