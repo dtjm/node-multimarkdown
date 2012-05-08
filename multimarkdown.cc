@@ -1,6 +1,8 @@
 #include <node.h>
 #include <v8.h>
+#include <stdlib.h>
 #include <string.h>
+
 enum markdown_extensions {
     EXT_SMART            = 1 << 0,
     EXT_NOTES            = 1 << 1,
