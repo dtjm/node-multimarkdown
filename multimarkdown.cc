@@ -39,6 +39,7 @@ void reallocbuf(int len) {
     free(buf);
     buflen = len + 1;
     buf = (char*) malloc(buflen);
+    memset(buf, 0, buflen);
 }
 
 int format = HTML_FORMAT;
