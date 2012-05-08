@@ -1,0 +1,22 @@
+{
+    "version": "0.0.1",
+    "name": "multimarkdown",
+    "author": "Sam Nguyen <samxnguyen@gmail.com>",
+    "homepage": "https://github.com/dtjm/node-multimarkdown",
+
+    "main": "build/Release/multimarkdown.node",
+    "files": [
+        "build/Release",
+        "README.md"
+    ],
+    "scripts": {
+        "preinstall": "make"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dtjm/node-multimarkdown.git"
+    },
+    "bugs": {
+        "url": "https://github.com/dtjm/node-multimarkdown/issues"
+    }
+}
