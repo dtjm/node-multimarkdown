@@ -11,3 +11,4 @@ ${PEGMMD}/markdown_lib.o:
 
 clean:
 	node-waf clean distclean
+	make -C ${PEGMMD} clean

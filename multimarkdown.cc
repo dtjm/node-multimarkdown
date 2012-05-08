@@ -1,7 +1,6 @@
 #include <node.h>
 #include <v8.h>
-// #include "vendor/peg-multimarkdown/markdown_peg.h"
-//
+#include <string.h>
 enum markdown_extensions {
     EXT_SMART            = 1 << 0,
     EXT_NOTES            = 1 << 1,
@@ -9,7 +8,7 @@ enum markdown_extensions {
     EXT_FILTER_STYLES    = 1 << 3,
     EXT_COMPATIBILITY    = 1 << 4,
     EXT_PROCESS_HTML     = 1 << 5,
-	EXT_NO_LABELS		 = 1 << 6,
+    EXT_NO_LABELS        = 1 << 6,
 };
 
 enum markdown_formats {
@@ -40,6 +39,9 @@ void reallocbuf(int len) {
     buf = (char*) malloc(buflen);
 }
 
+int format = HTML_FORMAT;
+int extensions = 0;
+
 Handle<Value> convert(const Arguments& args) {
     HandleScope scope;
 
@@ -53,12 +55,31 @@ Handle<Value> convert(const Arguments& args) {
     int stringLen = ls->Length();
     reallocbuf(stringLen);
     ls->WriteUtf8(buf, stringLen, NULL, 0);
-    char *out = markdown_to_string(buf, 0, HTML_FORMAT);
+    char *out = markdown_to_string(buf, extensions, format);
 
     Local<String> outString = String::New(out);
     free(out);
 
     return scope.Close(outString);
+}
+
+Handle<Value> setFormat(const Arguments& args) {
+    HandleScope scope;
+
+    if(args.Length() < 1 || !args[0]->IsString()) {
+        ThrowException(Exception::TypeError(String::New("Must pass string as first argument")));
+        return scope.Close(Undefined());
+    }
+
+    char argbuf[10];
+    Local<String> s = args[0]->ToString();
+    s->WriteUtf8(argbuf, 10, NULL, 0);
+    if(strcmp("latex", argbuf) == 0) {
+        format = LATEX_FORMAT;
+    }
+    else {
+        format = HTML_FORMAT;
+    }
 }
 
 void init(Handle<Object> target) {
