@@ -1,15 +1,15 @@
-PEGMMD=deps/peg-multimarkdown
-
 all: build/Release/multimarkdown.node
 
-build/Release/multimarkdown.node: multimarkdown.cc wscript ${PEGMMD}/markdown_lib.o
+build/Release/multimarkdown.node: multimarkdown.cc wscript deps/markdown_lib.o
 	node-waf configure build
+	rm -rf deps
 
-${PEGMMD}/markdown_lib.o:
+deps/markdown_lib.o:
 	git clone https://github.com/fletcher/peg-multimarkdown.git deps/peg-multimarkdown
 	cd deps/peg-multimarkdown; git checkout 3.5.1
 	make -C deps/peg-multimarkdown
+	cp deps/peg-multimarkdown/*.o deps
 
 clean:
 	node-waf clean distclean
-	make -C ${PEGMMD} clean
+	rm -rf deps
