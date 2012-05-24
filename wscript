@@ -13,7 +13,7 @@ def build(bld):
     obj = bld.new_task_gen('cxx', 'shlib', 'node_addon');
     obj.source = ['multimarkdown.cc'];
     obj.target = 'multimarkdown';
-    obj.add_obj_file("deps/markdown_lib.o");
-    obj.add_obj_file("deps/markdown_parser.o");
-    obj.add_obj_file("deps/markdown_output.o");
-    obj.add_obj_file("deps/GLibFacade.o");
+    obj.add_obj_file("deps/peg-multimarkdown/markdown_lib.o");
+    obj.add_obj_file("deps/peg-multimarkdown/markdown_parser.o");
+    obj.add_obj_file("deps/peg-multimarkdown/markdown_output.o"); 
+    obj.add_obj_file("deps/peg-multimarkdown/GLibFacade.o"); 

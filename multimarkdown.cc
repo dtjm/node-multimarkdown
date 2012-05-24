@@ -29,17 +29,18 @@ extern "C" {
 }
 
 using namespace v8;
-char *buf;
+char *buf = NULL;
 int buflen = -1;
 void reallocbuf(int len) {
-    if(len < buflen) {
-        return;
+    // Do the actual allocation if we requested more space that we have
+    // allocated.
+    if(len > buflen) {
+        buflen = len + 1;
+        buf = (char*) realloc(buf, buflen);
     }
 
-    free(buf);
-    buflen = len + 1;
-    buf = (char*) malloc(buflen);
-    memset(buf, 0, buflen);
+    // Clear the memory space
+    memset(buf, 0, len + 1);
 }
 
 int format = HTML_FORMAT;

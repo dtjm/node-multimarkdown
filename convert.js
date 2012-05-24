@@ -1,4 +1,4 @@
-var MMD = require("./build/Release/multimarkdown");
+var MMD = require("multimarkdown");
 var input = "";
 
 process.stdin.on("data", function(chunk){
