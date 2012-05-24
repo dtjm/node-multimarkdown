@@ -1,7 +1,7 @@
 var MMD = require("./build/Release/multimarkdown.node");
 
 var expected = {
-    "a": "<p>a</p>",
+    "aabb": "<p>aabb</p>",
     "ab": "<p>ab</p>",
     "c": "<p>c</p>"
 };
