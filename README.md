@@ -4,7 +4,7 @@ A wrapper for Fletcher Penney's peg-multimarkdown.
 
 Install using npm:
 
-npm install multimarkdown
+    npm install multimarkdown
 
 API
 ---
