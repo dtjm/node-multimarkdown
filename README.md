@@ -1,6 +1,6 @@
 node-multimarkdown - Native MultiMarkdown parser for Node.js
-===========
-A wrapper module for Fletcher Penney's peg-multimarkdown.
+============================================================
+A wrapper for Fletcher Penney's peg-multimarkdown.
 
 Install using npm:
 
