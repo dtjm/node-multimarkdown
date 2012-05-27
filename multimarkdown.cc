@@ -29,20 +29,8 @@ extern "C" {
 }
 
 using namespace v8;
-char *buf = NULL;
-int buflen = -1;
-void reallocbuf(int len) {
-    // Do the actual allocation if we requested more space that we have
-    // allocated.
-    if(len > buflen) {
-        buflen = len + 1;
-        buf = (char*) realloc(buf, buflen);
-    }
 
-    // Clear the memory space
-    memset(buf, 0, len + 1);
-}
-
+// Configuration
 int format = HTML_FORMAT;
 int extensions = 0;
 
@@ -57,10 +45,17 @@ Handle<Value> convert(const Arguments& args) {
     Local<String> ls = args[0]->ToString();
 
     int stringLen = ls->Length();
-    reallocbuf(stringLen);
-    ls->WriteUtf8(buf, stringLen, NULL, 0);
-    char *out = markdown_to_string(buf, extensions, format);
 
+    // Allocate memory for input string
+    char *buf = (char*) malloc(stringLen + 1);
+    memset(buf, 0, stringLen + 1);
+    ls->WriteUtf8(buf, stringLen, NULL, 0);
+
+    // Convert to markdown
+    char *out = markdown_to_string(buf, extensions, format);
+    free(buf);
+
+    // Convert to V8 string
     Local<String> outString = String::New(out);
     free(out);
 
