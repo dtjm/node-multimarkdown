@@ -44,7 +44,7 @@ Handle<Value> convert(const Arguments& args) {
 
     Local<String> ls = args[0]->ToString();
 
-    int stringLen = ls->Length();
+    int stringLen = ls->Utf8Length();
 
     // Allocate memory for input string
     char *buf = (char*) malloc(stringLen + 1);
