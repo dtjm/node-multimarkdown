@@ -32,7 +32,7 @@ using namespace v8;
 
 // Configuration
 int format = HTML_FORMAT;
-int extensions = 0;
+int extensions = EXT_SMART | EXT_NOTES;
 
 Handle<Value> convert(const Arguments& args) {
     HandleScope scope;
