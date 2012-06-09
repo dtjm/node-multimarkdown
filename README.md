@@ -13,5 +13,6 @@ Converts the given Markdown text into HTML and returns it as a string.
 
 Example usage
 --------
-var MultiMarkdown = require("multimarkdown");
-var html = MultiMarkdown.convert(markdownString);
+    
+    var MultiMarkdown = require("multimarkdown");
+    var html = MultiMarkdown.convert(markdownString);
