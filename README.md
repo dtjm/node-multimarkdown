@@ -11,6 +11,7 @@ API
 ### convert(text)
 Converts the given Markdown text into HTML and returns it as a string.
 
-Examples
+Example usage
 --------
-var MMD = require("multimarkdown");
+var MultiMarkdown = require("multimarkdown");
+var html = MultiMarkdown.convert(markdownString);
