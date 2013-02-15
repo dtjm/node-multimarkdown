@@ -10,7 +10,7 @@
         "README.md",
         "Makefile",
         "multimarkdown.cc",
-        "wscript"
+        ""
     ],
     "scripts": {
         "preinstall": "make"
