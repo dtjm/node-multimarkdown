@@ -13,7 +13,7 @@
         ""
     ],
     "scripts": {
-        "preinstall": "make"
+        "preinstall": "node-gyp configure && git clone https://github.com/fletcher/peg-multimarkdown.git deps/peg-multimarkdown && cd deps/peg-multimarkdown && git checkout 3.6 && make && cd ../../ && node-gyp build"
     },
     "repository": {
         "type": "git",
