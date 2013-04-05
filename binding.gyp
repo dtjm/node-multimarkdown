@@ -3,7 +3,6 @@
 		{
 			"target_name": "multimarkdown",
 			"sources": ["multimarkdown.cc"],
-			"cxxflags":  ["-fPIC"],
 			"link_settings": {
 				"libraries": [
 					'../deps/peg-multimarkdown/markdown_lib.o',
