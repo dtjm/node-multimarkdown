@@ -1,5 +1,5 @@
 {
-    "version": "0.0.9",
+    "version": "0.0.10",
     "name": "multimarkdown",
     "author": "Sam Nguyen <samxnguyen@gmail.com>",
     "homepage": "https://github.com/dtjm/node-multimarkdown",
@@ -13,7 +13,7 @@
         ""
     ],
     "scripts": {
-        "preinstall": "node-gyp configure && git clone https://github.com/fletcher/peg-multimarkdown.git deps/peg-multimarkdown && cd deps/peg-multimarkdown && git checkout 3.6 && make && cd ../../ && node-gyp build"
+        "preinstall": "node-gyp configure && git clone https://github.com/fletcher/peg-multimarkdown.git deps/peg-multimarkdown && cd deps/peg-multimarkdown && git checkout 3.7.1 && CFLAGS='-fPIC -Wall -O3 -include GLibFacade.h -I ./ -D MD_USE_GET_OPT=1 -D_GNU_SOURCE' make && cd ../../ && node-gyp build"
     },
     "repository": {
         "type": "git",
