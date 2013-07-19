@@ -13,7 +13,7 @@
         "binding.gyp"
     ],
     "scripts": {
-        "preinstall": "node-gyp configure && mkdir -p deps && cd deps && curl 'https://nodeload.github.com/fletcher/peg-multimarkdown/tar.gz/3.7' | tar zxvf - && mv peg-multimarkdown-* peg-multimarkdown && cd peg-multimarkdown && CFLAGS='-fPIC -Wall -O3 -include GLibFacade.h -I ./ -D MD_USE_GET_OPT=1 -D_GNU_SOURCE' make && cd ../../ && node-gyp build",
+        "preinstall": "node-gyp configure && mkdir -p deps && cd deps && curl 'https://codeload.github.com/fletcher/peg-multimarkdown/tar.gz/3.7' | tar zxvf - && mv peg-multimarkdown-* peg-multimarkdown && cd peg-multimarkdown && CFLAGS='-fPIC -Wall -O3 -include GLibFacade.h -I ./ -D MD_USE_GET_OPT=1 -D_GNU_SOURCE' make && cd ../../ && node-gyp build",
         "prepublish": "node test"
     },
     "repository": {
